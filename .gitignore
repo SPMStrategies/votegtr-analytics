@@ -1,0 +1,36 @@
+# Credentials and secrets
+config/credentials.json
+votegtr-analytics/config/credentials.json
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Reports
+reports/*.html
+reports/*.pdf
+reports/*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/

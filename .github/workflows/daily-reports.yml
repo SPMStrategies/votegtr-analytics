@@ -1,0 +1,40 @@
+name: Daily Reports
+
+on:
+  schedule:
+    # Run at 7AM ET (11AM UTC during EDT, 12PM UTC during EST)
+    - cron: '0 11 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Setup Google Cloud credentials
+        run: |
+          echo '${{ secrets.GOOGLE_CREDENTIALS }}' > config/credentials.json
+      
+      - name: Generate daily report
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+        run: |
+          python cli.py report daily --send-email
+      
+      - name: Check for alerts
+        run: |
+          python cli.py alerts check

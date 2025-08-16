@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/webhook.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "api/dashboard.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/webhook",
+      "dest": "/api/webhook.py"
+    },
+    {
+      "src": "/api/dashboard/(.*)",
+      "dest": "/api/dashboard.py"
+    },
+    {
+      "src": "/api/metrics",
+      "dest": "/api/dashboard.py"
+    }
+  ],
+  "env": {
+    "GOOGLE_APPLICATION_CREDENTIALS": "@votegtr-google-creds",
+    "GA4_PROPERTY_ID": "@votegtr-ga4-property",
+    "BIGQUERY_DATASET": "votegtr_analytics"
+  },
+  "crons": [
+    {
+      "path": "/api/reports/daily",
+      "schedule": "0 11 * * *"
+    }
+  ]
+}
