@@ -26,10 +26,13 @@ jobs:
       - name: Setup Google Cloud credentials
         run: |
           mkdir -p config
-          echo '${{ secrets.GOOGLE_CREDENTIALS }}' > config/credentials.json
+          echo "${{ secrets.GOOGLE_CREDENTIALS }}" > config/credentials.json
+          echo "Credentials file created, checking validity..."
+          python -c "import json; json.load(open('config/credentials.json'))" && echo "✓ Valid JSON" || echo "✗ Invalid JSON"
       
       - name: Debug environment
         env:
+          GOOGLE_APPLICATION_CREDENTIALS: config/credentials.json
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
@@ -40,6 +43,7 @@ jobs:
       
       - name: Generate daily report
         env:
+          GOOGLE_APPLICATION_CREDENTIALS: config/credentials.json
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
