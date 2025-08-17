@@ -25,6 +25,7 @@ jobs:
       
       - name: Setup Google Cloud credentials
         run: |
+          mkdir -p config
           echo '${{ secrets.GOOGLE_CREDENTIALS }}' > config/credentials.json
       
       - name: Generate daily report
