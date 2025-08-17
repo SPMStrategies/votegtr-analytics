@@ -23,9 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
+      - name: Create config directory
+        run: mkdir -p config
+      
       - name: Setup Google Cloud credentials
         run: |
-          mkdir -p config
           echo '${{ secrets.GOOGLE_CREDENTIALS }}' > config/credentials.json
           if [ ! -s config/credentials.json ]; then
             echo "Error: credentials.json is empty"
