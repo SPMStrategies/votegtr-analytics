@@ -28,6 +28,16 @@ jobs:
           mkdir -p config
           echo '${{ secrets.GOOGLE_CREDENTIALS }}' > config/credentials.json
       
+      - name: Debug environment
+        env:
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+        run: |
+          echo "Checking environment setup..."
+          python debug_github_setup.py || true
+          echo "Environment check complete"
+      
       - name: Generate daily report
         env:
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
