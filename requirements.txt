@@ -1,7 +1,8 @@
 google-analytics-data==0.18.19
 google-cloud-bigquery==3.11.4
 google-auth==2.40.3
-pandas==2.0.3
+pandas==2.2.3
+numpy<2.0.0
 python-dotenv==1.0.0
 click==8.1.7
 jinja2==3.1.2
