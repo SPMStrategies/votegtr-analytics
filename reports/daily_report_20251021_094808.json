@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "report_type": "daily",
+    "generated_at": "2025-10-21T09:48:04.803026",
+    "report_date": "2025-10-21",
+    "report_for": "2025-10-20"
+  },
+  "executive_summary": {
+    "yesterday": {
+      "users": 7,
+      "sessions": 11,
+      "page_views": 29,
+      "conversions": 0,
+      "bounce_rate": "54.5%"
+    },
+    "last_7_days": {
+      "total_users": 45,
+      "total_sessions": 60,
+      "total_conversions": 0,
+      "avg_bounce_rate": "61.3%"
+    },
+    "trends": {
+      "sessions_wow": "-9.1%",
+      "status": "declining"
+    }
+  },
+  "performance_metrics": {
+    "daily_trend": [
+      {
+        "date": "20251014",
+        "sessions": 9,
+        "conversions": 0
+      },
+      {
+        "date": "20251015",
+        "sessions": 9,
+        "conversions": 0
+      },
+      {
+        "date": "20251016",
+        "sessions": 10,
+        "conversions": 0
+      },
+      {
+        "date": "20251017",
+        "sessions": 11,
+        "conversions": 0
+      },
+      {
+        "date": "20251018",
+        "sessions": 8,
+        "conversions": 0
+      },
+      {
+        "date": "20251019",
+        "sessions": 2,
+        "conversions": 0
+      },
+      {
+        "date": "20251020",
+        "sessions": 11,
+        "conversions": 0
+      }
+    ],
+    "top_pages": [
+      {
+        "path": "/",
+        "views": 40,
+        "users": 24
+      },
+      {
+        "path": "/learning-center/",
+        "views": 17,
+        "users": 2
+      },
+      {
+        "path": "/winred-vs-anedot-a-real-talk-about-republican-campaign-fundraising/",
+        "views": 10,
+        "users": 10
+      },
+      {
+        "path": "/pricing/",
+        "views": 7,
+        "users": 6
+      },
+      {
+        "path": "/understanding-key-staff-roles-in-your-political-campaign-a-guide-for-first-time-candidates/",
+        "views": 4,
+        "users": 4
+      }
+    ],
+    "current_active_users": 0
+  },
+  "funnel_analysis": {
+    "stages": [
+      {
+        "stage": "Awareness",
+        "event": "page_view",
+        "count": 97,
+        "users": 48,
+        "conversion_rate": "100.0%",
+        "dropoff_rate": "0.0%"
+      }
+    ],
+    "total_conversion_rate": "100.00%",
+    "biggest_dropoff": "Awareness"
+  },
+  "attribution": {
+    "utm_coverage": "75.4%",
+    "total_conversions": 0,
+    "top_channels": [
+      {
+        "channel": "google/organic",
+        "sessions": 27,
+        "conversions": 0,
+        "conversion_rate": "0.00%"
+      },
+      {
+        "channel": "google/cpc",
+        "sessions": 13,
+        "conversions": 0,
+        "conversion_rate": "0.00%"
+      },
+      {
+        "channel": "(direct)/(none)",
+        "sessions": 12,
+        "conversions": 0,
+        "conversion_rate": "0.00%"
+      },
+      {
+        "channel": "(data not available)/(data not available)",
+        "sessions": 3,
+        "conversions": 0,
+        "conversion_rate": "0.00%"
+      },
+      {
+        "channel": "(not set)/(not set)",
+        "sessions": 3,
+        "conversions": 0,
+        "conversion_rate": "0.00%"
+      }
+    ],
+    "best_performing": "google/organic"
+  },
+  "cost_analysis": {
+    "summary": {
+      "status": "healthy",
+      "emergency_stop": false,
+      "generated_at": "2025-10-21T09:48:08.325676"
+    },
+    "current_usage": {
+      "today": {
+        "cost": "$0.00",
+        "queries": 0,
+        "budget_used": "0.0%"
+      },
+      "month": {
+        "cost": "$0.00",
+        "projected": "$0.00",
+        "budget_used": "0.0%"
+      }
+    },
+    "limits": {
+      "daily": "$5.0",
+      "monthly": "$150.0",
+      "per_query": "$1.0"
+    },
+    "optimization_tips": [
+      {
+        "category": "Table Optimization",
+        "issue": "Check if all tables are partitioned and clustered",
+        "recommendation": "Partition by date, cluster by common filter columns",
+        "potential_savings": "60-90% reduction in query costs"
+      }
+    ],
+    "recommendations": [
+      "\ud83d\udfe2 Costs are within healthy limits."
+    ]
+  },
+  "alerts": [
+    {
+      "type": "conversion",
+      "severity": "warning",
+      "message": "No conversions yesterday despite having sessions"
+    }
+  ],
+  "recommendations": [
+    "Focus on improving 'Awareness' stage - highest drop-off rate",
+    "Traffic is declining week-over-week - consider increasing marketing efforts",
+    "Partition by date, cluster by common filter columns",
+    "No conversions detected - verify tracking implementation"
+  ]
+}
