@@ -58,7 +58,7 @@ jobs:
 
       - name: Generate weekly analysis
         run: |
-          python cli.py analyze --send-email
+          python cli.py analyze
 
       - name: Commit and push analysis
         run: |
