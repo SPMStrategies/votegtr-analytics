@@ -34,3 +34,4 @@ Thumbs.db
 # Logs
 *.log
 logs/config/credentials_single_line.txt
+config/client_secret_*.json
