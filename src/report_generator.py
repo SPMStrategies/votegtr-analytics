@@ -175,35 +175,48 @@ class ReportGenerator:
         }
     
     def _get_funnel_analysis(self) -> Dict[str, Any]:
-        """Get funnel analysis"""
-        
+        """Get funnel analysis with separated stages and conversions"""
+
         funnel = self.ga4.get_funnel_metrics()
-        
-        # Calculate drop-off rates
-        stages_with_dropoff = []
-        for i, stage in enumerate(funnel['stages']):
-            if i == 0:
-                dropoff = 0
-            else:
-                prev_count = funnel['stages'][i-1]['count']
-                if prev_count > 0:
-                    dropoff = ((prev_count - stage['count']) / prev_count) * 100
-                else:
-                    dropoff = 0
-            
-            stages_with_dropoff.append({
+
+        # Format funnel stages (user journey)
+        stages_formatted = []
+        for stage in funnel.get('funnel_stages', []):
+            stages_formatted.append({
                 'stage': stage['stage'],
                 'event': stage['event'],
                 'count': stage['count'],
                 'users': stage['users'],
-                'conversion_rate': f"{stage['conversion_rate']:.1f}%",
-                'dropoff_rate': f"{dropoff:.1f}%"
+                'progression_rate': f"{stage.get('progression_rate', 100):.1f}%",
+                'drop_off_rate': f"{stage.get('drop_off_rate', 0):.1f}%"
             })
-        
+
+        # Format conversions
+        conversions_data = funnel.get('conversions', {})
+        conversions_formatted = []
+        for conv in conversions_data.get('events', []):
+            conversions_formatted.append({
+                'type': conv['type'],
+                'event': conv['event'],
+                'count': conv['count'],
+                'users': conv['users']
+            })
+
+        # Find biggest drop-off
+        biggest_dropoff = "N/A"
+        if stages_formatted:
+            max_dropoff_stage = max(stages_formatted, key=lambda x: float(x['drop_off_rate'].rstrip('%')))
+            biggest_dropoff = max_dropoff_stage['stage']
+
         return {
-            'stages': stages_with_dropoff,
-            'total_conversion_rate': f"{funnel['stages'][-1]['conversion_rate']:.2f}%" if funnel['stages'] else "0%",
-            'biggest_dropoff': max(stages_with_dropoff, key=lambda x: float(x['dropoff_rate'].rstrip('%')))['stage'] if stages_with_dropoff else "N/A"
+            'stages': stages_formatted,
+            'conversions': {
+                'total': conversions_data.get('total', 0),
+                'conversion_rate': f"{conversions_data.get('conversion_rate', 0):.2f}%",
+                'events': conversions_formatted
+            },
+            'biggest_dropoff': biggest_dropoff,
+            'total_sessions': funnel.get('total_sessions', 0)
         }
     
     def _get_attribution_analysis(self) -> Dict[str, Any]:

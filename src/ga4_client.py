@@ -53,71 +53,106 @@ class GA4Client:
     
     def get_funnel_metrics(self, start_date: str = '7daysAgo', end_date: str = 'today') -> Dict:
         """
-        Get funnel metrics based on VOTEGTR's conversion stages
-        
-        Returns dict with funnel stage data
+        Get funnel metrics - separates user journey stages from conversion events
+
+        Returns dict with funnel_stages and conversions separated
         """
         request = RunReportRequest(
             property=f"properties/{self.property_id}",
-            dimensions=[
-                Dimension(name="eventName"),
-                Dimension(name="date")
-            ],
+            dimensions=[Dimension(name="eventName")],
             metrics=[
                 Metric(name="eventCount"),
                 Metric(name="totalUsers")
             ],
             date_ranges=[DateRange(start_date=start_date, end_date=end_date)]
         )
-        
+
         response = self.client.run_report(request)
-        
-        # Define funnel events
-        funnel_events = {
-            'page_view': {'stage': 'Awareness', 'count': 0, 'users': 0},
-            'scroll': {'stage': 'Engagement', 'count': 0, 'users': 0},
-            'blog_read': {'stage': 'Consideration', 'count': 0, 'users': 0},
-            'start_now_clicked': {'stage': 'Interest', 'count': 0, 'users': 0},
-            'form_submit': {'stage': 'Lead Capture', 'count': 0, 'users': 0},
-            'click_call_now': {'stage': 'High Intent', 'count': 0, 'users': 0},
-            'click_schedule_time': {'stage': 'Qualified Lead', 'count': 0, 'users': 0},
-            'purchase_completed': {'stage': 'Purchase', 'count': 0, 'users': 0}
+
+        # Define funnel stages (user journey)
+        funnel_stages = {
+            'session_start': {'stage': 'Site Visit', 'count': 0, 'users': 0},
+            'page_view': {'stage': 'Content View', 'count': 0, 'users': 0},
+            'user_engagement': {'stage': 'Engaged Session', 'count': 0, 'users': 0},
+            'click': {'stage': 'Interaction', 'count': 0, 'users': 0}
         }
-        
-        # Parse response
+
+        # Define conversion events (goals achieved)
+        conversion_events = {
+            'form_submit': {'type': 'Form Submission', 'count': 0, 'users': 0},
+            'LP_TY_Page_Conv': {'type': 'Landing Page Conversion', 'count': 0, 'users': 0},
+            'sign_up__learning_': {'type': 'Learning Center Signup', 'count': 0, 'users': 0},
+            'purchase_completed': {'type': 'Purchase', 'count': 0, 'users': 0}
+        }
+
+        # Parse response and populate both dictionaries
         for row in response.rows:
             event_name = row.dimension_values[0].value
-            if event_name in funnel_events:
-                funnel_events[event_name]['count'] += int(row.metric_values[0].value)
-                funnel_events[event_name]['users'] += int(row.metric_values[1].value)
-        
-        # Build funnel stages
-        funnel_stages = []
-        for event, data in funnel_events.items():
+            event_count = int(row.metric_values[0].value)
+            user_count = int(row.metric_values[1].value)
+
+            if event_name in funnel_stages:
+                funnel_stages[event_name]['count'] = event_count
+                funnel_stages[event_name]['users'] = user_count
+            elif event_name in conversion_events:
+                conversion_events[event_name]['count'] = event_count
+                conversion_events[event_name]['users'] = user_count
+
+        # Build funnel stages list with progression rates
+        stages_list = []
+        previous_count = None
+
+        # Order matters for funnel progression
+        ordered_stages = ['session_start', 'page_view', 'user_engagement', 'click']
+
+        for event_name in ordered_stages:
+            data = funnel_stages[event_name]
             if data['count'] > 0:
-                funnel_stages.append({
-                    'event': event,
+                stage_data = {
+                    'event': event_name,
                     'stage': data['stage'],
                     'count': data['count'],
-                    'users': data['users'],
-                    'conversion_rate': 0  # Will calculate after sorting
-                })
-        
-        # Sort by count (descending) to calculate conversion rates
-        funnel_stages.sort(key=lambda x: x['count'], reverse=True)
-        
-        # Calculate conversion rates
-        if funnel_stages:
-            for i, stage in enumerate(funnel_stages):
-                if i == 0:
-                    stage['conversion_rate'] = 100.0
+                    'users': data['users']
+                }
+
+                # Calculate progression rate from previous stage
+                if previous_count is not None and previous_count > 0:
+                    stage_data['progression_rate'] = round((data['count'] / previous_count) * 100, 1)
+                    stage_data['drop_off_rate'] = round(100 - stage_data['progression_rate'], 1)
                 else:
-                    stage['conversion_rate'] = (stage['count'] / funnel_stages[0]['count']) * 100
-        
+                    stage_data['progression_rate'] = 100.0
+                    stage_data['drop_off_rate'] = 0.0
+
+                stages_list.append(stage_data)
+                previous_count = data['count']
+
+        # Build conversions list
+        conversions_list = []
+        total_conversions = 0
+
+        for event_name, data in conversion_events.items():
+            if data['count'] > 0:
+                conversions_list.append({
+                    'event': event_name,
+                    'type': data['type'],
+                    'count': data['count'],
+                    'users': data['users']
+                })
+                total_conversions += data['count']
+
+        # Calculate overall conversion rate
+        total_sessions = funnel_stages['session_start']['count'] if funnel_stages['session_start']['count'] > 0 else 0
+        conversion_rate = round((total_conversions / total_sessions * 100), 2) if total_sessions > 0 else 0
+
         return {
-            'stages': funnel_stages,
+            'funnel_stages': stages_list,
+            'conversions': {
+                'total': total_conversions,
+                'events': conversions_list,
+                'conversion_rate': conversion_rate
+            },
             'date_range': f"{start_date} to {end_date}",
-            'total_visitors': funnel_stages[0]['users'] if funnel_stages else 0
+            'total_sessions': total_sessions
         }
     
     def get_attribution_data(self, start_date: str = '7daysAgo', end_date: str = 'today') -> Dict:

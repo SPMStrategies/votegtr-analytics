@@ -1,0 +1,55 @@
+{
+  "channels": [
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "channel": "google/organic",
+      "sessions": 6,
+      "users": 3,
+      "conversions": 0,
+      "page_views": 23,
+      "conversion_rate": 0.0,
+      "pages_per_session": 3.8333333333333335
+    },
+    {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "Search - Political Website Design",
+      "channel": "google/cpc",
+      "sessions": 3,
+      "users": 3,
+      "conversions": 0,
+      "page_views": 5,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.6666666666666667
+    },
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "channel": "(direct)/(none)",
+      "sessions": 2,
+      "users": 2,
+      "conversions": 0,
+      "page_views": 3,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.5
+    },
+    {
+      "source": "conservativevoterscoalition.org",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "channel": "conservativevoterscoalition.org/referral",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 83.33333333333334,
+  "date_range": "yesterday to yesterday"
+}

@@ -500,9 +500,90 @@ def setup():
         
         click.echo()
         click.secho("✅ Setup check complete", fg='green')
-        
+
     except Exception as e:
         click.secho(f"❌ Error: {e}", fg='red')
+
+
+@cli.command()
+def collect():
+    """Collect today's GA4 data and save to date folder"""
+    try:
+        from collectors.ga4_data_collector import GA4DataCollector
+        from collectors.data_organizer import DataOrganizer
+
+        collector = GA4DataCollector()
+        organizer = DataOrganizer()
+
+        # Collect yesterday's data (most reliable for complete data)
+        yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+        click.secho(f"📊 Collecting data for {yesterday}...", fg='yellow')
+        data = collector.collect_daily_data('yesterday')
+
+        organizer.save_daily_data(yesterday, data)
+
+        click.secho(f"✅ Data collection complete!", fg='green')
+
+    except Exception as e:
+        click.secho(f"❌ Error: {e}", fg='red')
+        raise
+
+
+@cli.command()
+@click.option('--send-email', is_flag=True, help='Send report via email')
+def analyze(send_email):
+    """Generate AI-powered weekly analysis"""
+    try:
+        from collectors.data_organizer import DataOrganizer
+        from analyzers.ai_analyzer import AIAnalyzer
+        from generators.report_builder import ReportBuilder
+        from email_sender import EmailSender
+
+        organizer = DataOrganizer()
+        analyzer = AIAnalyzer()
+        builder = ReportBuilder()
+
+        # Get last 7 days of data
+        today = datetime.now().strftime('%Y-%m-%d')
+
+        click.secho("📅 Aggregating weekly data...", fg='yellow')
+        week_data = organizer.get_week_data(today)
+
+        # Generate AI analysis
+        click.secho("🤖 Generating AI analysis with Claude...", fg='yellow')
+        markdown = analyzer.analyze_weekly_data(week_data)
+
+        # Build reports
+        click.secho("📝 Building reports...", fg='yellow')
+        html = builder.markdown_to_html(markdown, week_data)
+        md_path, html_path = builder.save_report(markdown, html, today)
+
+        click.secho(f"✅ Analysis saved:", fg='green')
+        click.echo(f"   Markdown: {md_path}")
+        click.echo(f"   HTML: {html_path}")
+
+        # Send email if requested
+        if send_email:
+            email_sender = EmailSender()
+            if email_sender.enabled:
+                click.secho("📧 Sending email...", fg='yellow')
+                # Send HTML via email
+                subject = f"VOTEGTR Weekly Analytics - {week_data['date_range']}"
+                email_sender.send_email(
+                    subject=subject,
+                    html_content=html,
+                    text_content=markdown[:500]  # Preview
+                )
+                click.secho("✅ Email sent!", fg='green')
+            else:
+                click.secho("⚠️  Email not configured", fg='yellow')
+
+    except Exception as e:
+        click.secho(f"❌ Error: {e}", fg='red')
+        import traceback
+        traceback.print_exc()
+        raise
 
 
 if __name__ == '__main__':
