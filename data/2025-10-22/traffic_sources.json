@@ -1,0 +1,19 @@
+{
+  "channels": [
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "channel": "(data not available)/(data not available)",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 2,
+      "conversion_rate": 0.0,
+      "pages_per_session": 2.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 100.0,
+  "date_range": "yesterday to yesterday"
+}
