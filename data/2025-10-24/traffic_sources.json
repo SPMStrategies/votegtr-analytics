@@ -1,0 +1,67 @@
+{
+  "channels": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "channel": "(direct)/(none)",
+      "sessions": 8,
+      "users": 8,
+      "conversions": 0,
+      "page_views": 8,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "channel": "(data not available)/(data not available)",
+      "sessions": 2,
+      "users": 2,
+      "conversions": 0,
+      "page_views": 3,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.5
+    },
+    {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "Search - Political Website Design",
+      "channel": "google/cpc",
+      "sessions": 2,
+      "users": 2,
+      "conversions": 0,
+      "page_views": 2,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "campaign": "(not set)",
+      "channel": "(not set)/(not set)",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 0,
+      "conversion_rate": 0.0,
+      "pages_per_session": 0.0
+    },
+    {
+      "source": "fairfaxgop.org",
+      "medium": "referral",
+      "campaign": "footer_links",
+      "channel": "fairfaxgop.org/referral",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 35.714285714285715,
+  "date_range": "yesterday to yesterday"
+}
