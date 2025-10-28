@@ -1,0 +1,55 @@
+{
+  "channels": [
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "campaign": "(not set)",
+      "channel": "(not set)/(not set)",
+      "sessions": 5,
+      "users": 5,
+      "conversions": 0,
+      "page_views": 6,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.2
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "channel": "google/organic",
+      "sessions": 2,
+      "users": 2,
+      "conversions": 0,
+      "page_views": 3,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.5
+    },
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "channel": "(direct)/(none)",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "shea2025.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "channel": "shea2025.com/referral",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 33.33333333333333,
+  "date_range": "yesterday to yesterday"
+}

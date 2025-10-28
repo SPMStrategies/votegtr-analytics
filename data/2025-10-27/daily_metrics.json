@@ -1,0 +1,30 @@
+{
+  "daily_metrics": [
+    {
+      "date": "20251027",
+      "users": 5,
+      "sessions": 7,
+      "page_views": 11,
+      "avg_session_duration": 229.3190047142857,
+      "bounce_rate": 100.0,
+      "conversions": 0
+    },
+    {
+      "date": "20251028",
+      "users": 1,
+      "sessions": 1,
+      "page_views": 1,
+      "avg_session_duration": 2.063167,
+      "bounce_rate": 100.0,
+      "conversions": 0
+    }
+  ],
+  "totals": {
+    "total_users": 6,
+    "total_sessions": 8,
+    "total_page_views": 12,
+    "total_conversions": 0,
+    "avg_bounce_rate": 100.0
+  },
+  "period": "Last 1 days"
+}
