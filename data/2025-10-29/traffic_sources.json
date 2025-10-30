@@ -1,0 +1,67 @@
+{
+  "channels": [
+    {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "Search - Political Website Design",
+      "channel": "google/cpc",
+      "sessions": 3,
+      "users": 2,
+      "conversions": 0,
+      "page_views": 3,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "channel": "google/organic",
+      "sessions": 2,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 0.5
+    },
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "channel": "(direct)/(none)",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 7,
+      "conversion_rate": 0.0,
+      "pages_per_session": 7.0
+    },
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "campaign": "(not set)",
+      "channel": "(not set)/(not set)",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 10,
+      "conversion_rate": 0.0,
+      "pages_per_session": 10.0
+    },
+    {
+      "source": "chatgpt.com",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "channel": "chatgpt.com/referral",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 2,
+      "conversion_rate": 0.0,
+      "pages_per_session": 2.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 75.0,
+  "date_range": "yesterday to yesterday"
+}
