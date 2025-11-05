@@ -1,0 +1,79 @@
+{
+  "channels": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "channel": "(direct)/(none)",
+      "sessions": 4,
+      "users": 4,
+      "conversions": 0,
+      "page_views": 5,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.25
+    },
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "campaign": "(not set)",
+      "channel": "(not set)/(not set)",
+      "sessions": 4,
+      "users": 4,
+      "conversions": 0,
+      "page_views": 7,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.75
+    },
+    {
+      "source": "(data not available)",
+      "medium": "(data not available)",
+      "campaign": "(cross-network)",
+      "channel": "(data not available)/(data not available)",
+      "sessions": 2,
+      "users": 2,
+      "conversions": 0,
+      "page_views": 2,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "davisfordelegate.org",
+      "medium": "referral",
+      "campaign": "(referral)",
+      "channel": "davisfordelegate.org/referral",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "Search - Political Website Design",
+      "channel": "google/cpc",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "channel": "google/organic",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 38.46153846153847,
+  "date_range": "yesterday to yesterday"
+}
