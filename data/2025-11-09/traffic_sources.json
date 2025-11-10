@@ -1,0 +1,31 @@
+{
+  "channels": [
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "channel": "(direct)/(none)",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 0,
+      "conversion_rate": 0.0,
+      "pages_per_session": 0.0
+    },
+    {
+      "source": "(not set)",
+      "medium": "(not set)",
+      "campaign": "(not set)",
+      "channel": "(not set)/(not set)",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 1,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 0.0,
+  "date_range": "yesterday to yesterday"
+}
