@@ -1,0 +1,43 @@
+{
+  "channels": [
+    {
+      "source": "google",
+      "medium": "organic",
+      "campaign": "(organic)",
+      "channel": "google/organic",
+      "sessions": 6,
+      "users": 6,
+      "conversions": 0,
+      "page_views": 12,
+      "conversion_rate": 0.0,
+      "pages_per_session": 2.0
+    },
+    {
+      "source": "(direct)",
+      "medium": "(none)",
+      "campaign": "(direct)",
+      "channel": "(direct)/(none)",
+      "sessions": 4,
+      "users": 3,
+      "conversions": 0,
+      "page_views": 4,
+      "conversion_rate": 0.0,
+      "pages_per_session": 1.0
+    },
+    {
+      "source": "google",
+      "medium": "cpc",
+      "campaign": "Search - Political Website Design",
+      "channel": "google/cpc",
+      "sessions": 1,
+      "users": 1,
+      "conversions": 0,
+      "page_views": 2,
+      "conversion_rate": 0.0,
+      "pages_per_session": 2.0
+    }
+  ],
+  "total_conversions": 0,
+  "utm_coverage": 63.63636363636363,
+  "date_range": "yesterday to yesterday"
+}

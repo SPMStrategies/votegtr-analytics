@@ -1,0 +1,43 @@
+{
+  "funnel_stages": [
+    {
+      "event": "session_start",
+      "stage": "Site Visit",
+      "count": 11,
+      "users": 10,
+      "progression_rate": 100.0,
+      "drop_off_rate": 0.0
+    },
+    {
+      "event": "page_view",
+      "stage": "Content View",
+      "count": 18,
+      "users": 10,
+      "progression_rate": 163.6,
+      "drop_off_rate": -63.6
+    },
+    {
+      "event": "user_engagement",
+      "stage": "Engaged Session",
+      "count": 10,
+      "users": 6,
+      "progression_rate": 55.6,
+      "drop_off_rate": 44.4
+    },
+    {
+      "event": "click",
+      "stage": "Interaction",
+      "count": 1,
+      "users": 1,
+      "progression_rate": 10.0,
+      "drop_off_rate": 90.0
+    }
+  ],
+  "conversions": {
+    "total": 0,
+    "events": [],
+    "conversion_rate": 0.0
+  },
+  "date_range": "yesterday to yesterday",
+  "total_sessions": 11
+}
